@@ -2,7 +2,7 @@ const DATA_ROOT = "./data";
 
 const layerState = {
   roads: true,
-  buildings: true,
+  buildings: false,
   places: true,
   core: true,
   extensions: false,
@@ -20,6 +20,8 @@ const COLORS = {
 };
 
 const layerGroups = {};
+const layerLoaders = {};
+const pendingLayerLoads = {};
 let map;
 
 function popupHtml(title, lines) {
@@ -61,12 +63,28 @@ function buildLayerToggle(label, key) {
   const btn = document.createElement("button");
   btn.className = `layer-chip ${layerState[key] ? "active" : ""}`;
   btn.textContent = label;
-  btn.addEventListener("click", () => {
+  btn.addEventListener("click", async () => {
     layerState[key] = !layerState[key];
     btn.classList.toggle("active", layerState[key]);
+    if (layerState[key]) {
+      await ensureLayerLoaded(key);
+    }
     syncLayerVisibility();
   });
   return btn;
+}
+
+async function ensureLayerLoaded(key) {
+  if (layerGroups[key] || !layerLoaders[key]) {
+    return;
+  }
+  if (!pendingLayerLoads[key]) {
+    pendingLayerLoads[key] = layerLoaders[key]().then((layer) => {
+      layerGroups[key] = layer;
+      return layer;
+    });
+  }
+  await pendingLayerLoads[key];
 }
 
 function syncLayerVisibility() {
@@ -106,6 +124,37 @@ function focusCityView(cityCenter) {
   const feature = cityCenter.features[0];
   const [lng, lat] = feature.geometry.coordinates;
   map.setView([lat, lng], 14.35);
+}
+
+function createBuildingsLayer(buildings) {
+  return L.geoJSON(buildings, {
+    pane: "buildings",
+    pointToLayer: (feature, latlng) =>
+      L.circleMarker(latlng, {
+        radius:
+          feature.properties.impact_level === "severe"
+            ? 4.6
+            : feature.properties.impact_level === "moderate"
+              ? 3.8
+              : feature.properties.impact_level === "minor"
+                ? 3.2
+                : 2.4,
+        color: COLORS.buildingStroke,
+        weight: feature.properties.impact_level === "severe" ? 1 : 0.7,
+        fillColor: COLORS.buildingFill,
+        fillOpacity: feature.properties.impact_level === "proximity" ? 0.34 : 0.58,
+        opacity: 0.88,
+      }),
+    onEachFeature(feature, layer) {
+      layer.bindPopup(
+        popupHtml("Building", [
+          `Impact: ${feature.properties.impact_level}`,
+          `Flooded share: ${(feature.properties.impact_fraction * 100).toFixed(1)}%`,
+          `Distance to water: ${feature.properties.distance_to_flood_m.toFixed(0)} m`,
+        ]),
+      );
+    },
+  });
 }
 
 function buildLayers(data) {
@@ -172,27 +221,6 @@ function buildLayers(data) {
     },
   }).addTo(map);
 
-  layerGroups.buildings = L.geoJSON(data.buildings, {
-    pane: "buildings",
-    style: (feature) => ({
-      color: COLORS.buildingStroke,
-      weight: feature.properties.impact_level === "severe" ? 0.85 : 0.55,
-      fillColor: COLORS.buildingFill,
-      fillOpacity: feature.properties.impact_level === "proximity" ? 0.2 : 0.36,
-      opacity: 0.78,
-    }),
-    onEachFeature(feature, layer) {
-      const title = feature.properties.name || "Building";
-      layer.bindPopup(
-        popupHtml(title, [
-          `Impact: ${feature.properties.impact_level}`,
-          `Flooded share: ${(feature.properties.impact_fraction * 100).toFixed(1)}%`,
-          `Distance to water: ${feature.properties.distance_to_flood_m.toFixed(0)} m`,
-        ]),
-      );
-    },
-  }).addTo(map);
-
   layerGroups.places = L.geoJSON(data.places, {
     pane: "places",
     pointToLayer: (feature, latlng) =>
@@ -216,20 +244,20 @@ function buildLayers(data) {
 }
 
 async function init() {
-  const [meta, cityCenter, finalMask, coreMask, extensions, roads, buildings, places] = await Promise.all([
+  const [meta, cityCenter, finalMask, coreMask, extensions, roads, places] = await Promise.all([
     loadJson(`${DATA_ROOT}/story_meta.json`),
     loadJson(`${DATA_ROOT}/city_center.geojson`),
     loadJson(`${DATA_ROOT}/final_story_mask.geojson`),
     loadJson(`${DATA_ROOT}/core_mask.geojson`),
     loadJson(`${DATA_ROOT}/s1_extensions.geojson`),
     loadJson(`${DATA_ROOT}/roads_impacted.geojson`),
-    loadJson(`${DATA_ROOT}/buildings_impacted.geojson`),
     loadJson(`${DATA_ROOT}/places_impacted.geojson`),
   ]);
 
   buildMap();
   buildControls(meta);
-  buildLayers({ cityCenter, finalMask, coreMask, extensions, roads, buildings, places });
+  layerLoaders.buildings = async () => createBuildingsLayer(await loadJson(`${DATA_ROOT}/buildings_impacted.geojson`));
+  buildLayers({ cityCenter, finalMask, coreMask, extensions, roads, places });
   syncLayerVisibility();
 }
 

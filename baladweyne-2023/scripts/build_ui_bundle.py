@@ -30,6 +30,12 @@ def simplify_for_ui(gdf: gpd.GeoDataFrame, tolerance_m: float) -> gpd.GeoDataFra
     return projected.to_crs("EPSG:4326")
 
 
+def representative_points_for_ui(gdf: gpd.GeoDataFrame) -> gpd.GeoDataFrame:
+    projected = gdf.to_crs(PROJECTED_CRS).copy()
+    projected["geometry"] = projected.geometry.representative_point()
+    return projected.to_crs("EPSG:4326")
+
+
 def soften_mask_for_ui(gdf: gpd.GeoDataFrame, expand_m: float, contract_m: float, simplify_m: float) -> gpd.GeoDataFrame:
     projected = gdf.to_crs(PROJECTED_CRS)
     softened = projected.union_all().buffer(expand_m).buffer(-contract_m)
@@ -87,9 +93,11 @@ def main() -> int:
     buildings = buildings.loc[buildings["impact_level"] != "none"].copy()
     buildings = keep_columns(
         buildings,
-        ["osm_id", "name", "feature_type", "impact_level", "impact_fraction", "distance_to_flood_m", "geometry"],
+        ["osm_id", "impact_level", "impact_fraction", "distance_to_flood_m", "geometry"],
     )
-    buildings = simplify_for_ui(buildings, 3)
+    buildings["impact_fraction"] = buildings["impact_fraction"].round(3)
+    buildings["distance_to_flood_m"] = buildings["distance_to_flood_m"].round(1)
+    buildings = representative_points_for_ui(buildings)
 
     write_geojson(aoi[["geometry"]], UI_DATA / "aoi.geojson")
     write_geojson(city_center[["geometry"]], UI_DATA / "city_center.geojson")

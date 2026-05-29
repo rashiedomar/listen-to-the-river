@@ -21,7 +21,6 @@ const COLORS = {
 
 const layerGroups = {};
 let map;
-let waterRenderer;
 
 function popupHtml(title, lines) {
   return `
@@ -35,7 +34,7 @@ function popupHtml(title, lines) {
 function buildMap() {
   map = L.map("map", {
     zoomControl: true,
-    preferCanvas: false,
+    preferCanvas: true,
     zoomSnap: 0.25,
   });
 
@@ -52,50 +51,10 @@ function buildMap() {
   map.getPane("buildings").classList.add("buildings-pane");
   map.getPane("roads").classList.add("roads-pane");
 
-  waterRenderer = L.svg({ pane: "water", padding: 0.4 });
-
   L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
     attribution: "&copy; OpenStreetMap contributors",
     maxZoom: 19,
   }).addTo(map);
-}
-
-function ensureWaterDefs() {
-  const svg = document.querySelector("#map .leaflet-pane.water-pane svg");
-  if (!svg || svg.querySelector("#waterPatternMain")) {
-    return;
-  }
-
-  const ns = "http://www.w3.org/2000/svg";
-  const defs = document.createElementNS(ns, "defs");
-  defs.innerHTML = `
-    <filter id="waterSoftBlur" x="-30%" y="-30%" width="160%" height="160%">
-      <feGaussianBlur stdDeviation="3.8" />
-    </filter>
-    <filter id="waterEdgeBlur" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur stdDeviation="1.5" />
-    </filter>
-    <pattern id="waterPatternMain" patternUnits="userSpaceOnUse" width="96" height="96">
-      <rect width="96" height="96" fill="#7fbfe8"></rect>
-      <path d="M-6 22 C10 8, 26 8, 42 22 S74 36, 92 22" fill="none" stroke="#eef8ff" stroke-opacity="0.44" stroke-width="2.2" stroke-linecap="round"/>
-      <path d="M-4 56 C12 44, 28 44, 46 56 S78 68, 98 56" fill="none" stroke="#d7eefc" stroke-opacity="0.36" stroke-width="1.8" stroke-linecap="round"/>
-      <path d="M-8 82 C8 70, 26 70, 42 82 S74 96, 98 82" fill="none" stroke="#f7fbff" stroke-opacity="0.25" stroke-width="1.4" stroke-linecap="round"/>
-      <animateTransform attributeName="patternTransform" type="translate" from="0 0" to="24 12" dur="18s" repeatCount="indefinite" />
-    </pattern>
-    <pattern id="waterPatternCore" patternUnits="userSpaceOnUse" width="86" height="86">
-      <rect width="86" height="86" fill="#3f88bf"></rect>
-      <path d="M-8 20 C12 5, 30 5, 50 20 S84 34, 100 18" fill="none" stroke="#d8f1ff" stroke-opacity="0.42" stroke-width="1.8" stroke-linecap="round"/>
-      <path d="M-6 54 C12 42, 30 42, 48 54 S80 68, 92 52" fill="none" stroke="#a9d3ef" stroke-opacity="0.38" stroke-width="1.5" stroke-linecap="round"/>
-      <animateTransform attributeName="patternTransform" type="translate" from="0 0" to="20 8" dur="14s" repeatCount="indefinite" />
-    </pattern>
-    <pattern id="waterPatternFringe" patternUnits="userSpaceOnUse" width="112" height="112">
-      <rect width="112" height="112" fill="#b5def2"></rect>
-      <path d="M-8 26 C16 10, 38 10, 60 26 S104 42, 126 26" fill="none" stroke="#f9fdff" stroke-opacity="0.34" stroke-width="2" stroke-linecap="round"/>
-      <path d="M-8 72 C16 58, 38 58, 58 72 S102 84, 122 72" fill="none" stroke="#d7eefb" stroke-opacity="0.24" stroke-width="1.5" stroke-linecap="round"/>
-      <animateTransform attributeName="patternTransform" type="translate" from="0 0" to="26 10" dur="22s" repeatCount="indefinite" />
-    </pattern>
-  `;
-  svg.prepend(defs);
 }
 
 function buildLayerToggle(label, key) {
@@ -152,31 +111,16 @@ function focusCityView(cityCenter) {
 function buildLayers(data) {
   focusCityView(data.cityCenter);
 
-  const waterGlow = L.geoJSON(data.finalMask, {
-    pane: "water",
-    interactive: false,
-    renderer: waterRenderer,
-    style: {
-      className: "flood-glow",
-      color: "#7fc1ea",
-      weight: 0,
-      fillColor: COLORS.water,
-      fillOpacity: 0.22,
-      opacity: 0,
-    },
-  }).addTo(map);
-
   L.geoJSON(data.finalMask, {
     pane: "water",
     interactive: false,
-    renderer: waterRenderer,
     style: {
       className: "flood-final",
       color: COLORS.waterEdge,
       weight: 0.6,
       fillColor: COLORS.water,
-      fillOpacity: 0.22,
-      opacity: 0.65,
+      fillOpacity: 0.32,
+      opacity: 0.72,
       lineJoin: "round",
     },
   }).addTo(map);
@@ -184,14 +128,13 @@ function buildLayers(data) {
   layerGroups.core = L.geoJSON(data.coreMask, {
     pane: "water",
     interactive: false,
-    renderer: waterRenderer,
     style: {
       className: "flood-core",
       color: "#0d3f6b",
-      weight: 0.35,
+      weight: 0.4,
       fillColor: COLORS.core,
-      fillOpacity: 0.25,
-      opacity: 0.65,
+      fillOpacity: 0.24,
+      opacity: 0.7,
       lineJoin: "round",
     },
   }).addTo(map);
@@ -199,14 +142,13 @@ function buildLayers(data) {
   layerGroups.extensions = L.geoJSON(data.extensions, {
     pane: "water",
     interactive: false,
-    renderer: waterRenderer,
     style: {
       className: "flood-fringe",
       color: "#6eaed8",
       weight: 0.2,
       fillColor: COLORS.fringe,
-      fillOpacity: 0.16,
-      opacity: 0.5,
+      fillOpacity: 0.14,
+      opacity: 0.42,
       lineJoin: "round",
     },
   });
@@ -271,8 +213,6 @@ function buildLayers(data) {
       );
     },
   }).addTo(map);
-
-  ensureWaterDefs();
 }
 
 async function init() {

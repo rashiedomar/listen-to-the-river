@@ -158,46 +158,27 @@ body {
   background: #e9e1d6;
 }
 
-.leaflet-pane.water-pane {
-  mix-blend-mode: multiply;
-}
-
-.leaflet-pane.buildings-pane path {
-  filter: drop-shadow(0 0 0.35px rgba(255, 255, 255, 0.32));
-}
-
 .leaflet-pane.roads-pane path {
   stroke-linecap: round;
   stroke-linejoin: round;
 }
 
-.leaflet-pane.water-pane path.flood-glow {
-  fill: #9ad4f6 !important;
-  fill-opacity: 0.26 !important;
-  stroke: none !important;
-  filter: url(#waterSoftBlur);
-}
-
 .leaflet-pane.water-pane path.flood-final {
-  fill: url(#waterPatternMain) !important;
-  fill-opacity: 0.72 !important;
-  stroke: rgba(63, 123, 171, 0.72) !important;
-  stroke-opacity: 0.58 !important;
-  filter: url(#waterEdgeBlur);
+  fill: rgba(103, 168, 223, 0.32) !important;
+  stroke: rgba(43, 107, 157, 0.72) !important;
+  stroke-opacity: 0.72 !important;
 }
 
 .leaflet-pane.water-pane path.flood-core {
-  fill: url(#waterPatternCore) !important;
-  fill-opacity: 0.82 !important;
-  stroke: rgba(17, 71, 115, 0.7) !important;
-  stroke-opacity: 0.66 !important;
+  fill: rgba(24, 79, 131, 0.24) !important;
+  stroke: rgba(13, 63, 107, 0.78) !important;
+  stroke-opacity: 0.78 !important;
 }
 
 .leaflet-pane.water-pane path.flood-fringe {
-  fill: url(#waterPatternFringe) !important;
-  fill-opacity: 0.5 !important;
-  stroke: rgba(117, 170, 204, 0.55) !important;
-  stroke-opacity: 0.4 !important;
+  fill: rgba(158, 212, 240, 0.14) !important;
+  stroke: rgba(110, 174, 216, 0.42) !important;
+  stroke-opacity: 0.42 !important;
 }
 
 .leaflet-control-zoom {

@@ -1,0 +1,25 @@
+{
+  "city_query": "Beledweyne, Somalia",
+  "buffer_km": 10.0,
+  "aoi_bounds_wgs84": [
+    44.953693625840835,
+    4.486306063017986,
+    45.454080277587295,
+    4.987239865535299
+  ],
+  "feature_counts": {
+    "buildings": 60268,
+    "roads": 5418,
+    "waterways": 1128,
+    "places": 107
+  },
+  "outputs": {
+    "city_center": "study_area/city_center.geojson",
+    "aoi_definition": "study_area/aoi_definition.geojson",
+    "event_manifest": "config/event_manifest.json",
+    "buildings": "source_data/osm/buildings.geojson",
+    "roads": "source_data/osm/roads.geojson",
+    "waterways": "source_data/osm/waterways.geojson",
+    "places": "source_data/osm/places.geojson"
+  }
+}

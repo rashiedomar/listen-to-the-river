@@ -1,0 +1,102 @@
+{
+  "event_id": "SOM_NOV2023_BALADWEYNE_RIVERINE_FLOOD",
+  "city": "Baladweyne",
+  "city_aliases": [
+    "Baladweyne",
+    "Belet Weyne",
+    "Beledweyne"
+  ],
+  "country": "Somalia",
+  "river": "Shabelle",
+  "focus_event": {
+    "start_date": "2023-11-17",
+    "peak_date": "2023-11-21",
+    "end_date": "2023-11-21",
+    "label": "Baladweyne November 2023 riverine flood"
+  },
+  "geocoded_place": {
+    "name": "Beledweyne \u0628\u0644\u062f \u0648\u064a\u0646, Belet Weyne \u0628\u0644\u062f \u0648\u064a\u0646, Hiiraan \u0647\u064a\u0631\u0627\u0646, Hirshabeelle \u0647\u064a\u0631\u0634\u0627\u0628\u064a\u0644, Soomaaliya \u0627\u0644\u0635\u0648\u0645\u0627\u0644",
+    "query_name": "Beledweyne \u0628\u0644\u062f \u0648\u064a\u0646",
+    "osm_type": "node",
+    "osm_id": 43528290,
+    "lat": 4.7367735,
+    "lon": 45.2038881
+  },
+  "aoi_bounds_wgs84": [
+    44.953693625840835,
+    4.486306063017986,
+    45.454080277587295,
+    4.987239865535299
+  ],
+  "source_documents": [
+    {
+      "title": "Beletweyne Riverine Flood Impact Map - Issued 21 November 2023",
+      "url": "https://faoswalim.org/content/beletweyne-riverine-flood-impact-map-issued-21-november-2023",
+      "pub_date": "Tue, 21 Nov 2023 14:48:46 +0000",
+      "kind": "impact_map"
+    },
+    {
+      "title": "Beletweyne Riverine Flood Impact Map - Issued 17 November 2023",
+      "url": "https://faoswalim.org/content/beletweyne-riverine-flood-impact-map-issued-17-november-2023",
+      "pub_date": "Sat, 18 Nov 2023 08:51:01 +0000",
+      "kind": "impact_map"
+    },
+    {
+      "title": "Higher Ground for Flood Evacuation in BeletWeyne and Jowhar Districts",
+      "url": "https://faoswalim.org/content/higher-ground-flood-evacuation-beletweyne-and-jowhar-districts",
+      "pub_date": "Thu, 21 Sep 2023 09:46:10 +0000",
+      "kind": "bulletin"
+    },
+    {
+      "title": "BeletWeyne Flood Advisory - Issued 08 May 2023",
+      "url": "https://faoswalim.org/content/beletweyne-flood-advisory-issued-08-may-2023",
+      "pub_date": "Mon, 08 May 2023 20:05:46 +0000",
+      "kind": "bulletin"
+    },
+    {
+      "title": "Somalia Flood Update  and Analysis in BeletWeyne - Issued 16-09-2020",
+      "url": "https://faoswalim.org/content/somalia-flood-update-and-analysis-beletweyne-issued-16-09-2020",
+      "pub_date": "Wed, 16 Sep 2020 09:08:26 +0000",
+      "kind": "bulletin"
+    },
+    {
+      "title": "Belet Weyne District Flood Extent Map (As of 30 October 2019) - Issued 1 November 2019",
+      "url": "https://faoswalim.org/content/belet-weyne-district-flood-extent-map-30-october-2019-issued-1-november-2019",
+      "pub_date": "Fri, 01 Nov 2019 12:21:08 +0000",
+      "kind": "bulletin"
+    },
+    {
+      "title": "Belet Weyne flood map - June 2016",
+      "url": "https://faoswalim.org/content/belet-weyne-flood-map-june-2016",
+      "pub_date": "Fri, 03 Jun 2016 11:59:44 +0000",
+      "kind": "bulletin"
+    },
+    {
+      "title": "Belet Weyne District Reported Floods observation and Sentinel-2 image analysis (25 May 2016)",
+      "url": "https://faoswalim.org/content/belet-weyne-district-reported-floods-observation-and-sentinel-2-image-analysis-25-may-2016",
+      "pub_date": "Wed, 08 Jun 2016 12:50:28 +0000",
+      "kind": "bulletin"
+    },
+    {
+      "title": "El Nino flood in Belet Weyne district,  Hiran region - Somalia; A household economy assesment",
+      "url": "https://faoswalim.org/content/el-nino-flood-belet-weyne-district-hiran-region-somalia-household-economy-assesment",
+      "pub_date": "Tue, 18 Nov 2014 12:35:33 +0000",
+      "kind": "bulletin"
+    },
+    {
+      "title": "Agricultural support project Mid-term review, Belet Weyne district, Hiran region, Somalia",
+      "url": "https://faoswalim.org/content/agricultural-support-project-mid-term-review-belet-weyne-district-hiran-region-somalia",
+      "pub_date": "Tue, 18 Nov 2014 12:35:33 +0000",
+      "kind": "bulletin"
+    }
+  ],
+  "recommended_analysis_window": {
+    "start_date": "2023-09-01",
+    "end_date": "2023-12-15"
+  },
+  "hydrology": {
+    "snrfa_station": "SH001",
+    "frrims_station_id": 4,
+    "station_name": "Belet Weyne"
+  }
+}

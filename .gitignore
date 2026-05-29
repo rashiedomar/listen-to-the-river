@@ -1,0 +1,42 @@
+__pycache__/
+*.py[cod]
+.DS_Store
+.ipynb_checkpoints/
+.venv/
+venv/
+
+# Local tokens and scratch files
+token.txt
+*.log
+
+# Large local rasters and review exports
+**/*.tif
+**/*.png
+**/*.jpg
+**/*.jpeg
+**/*.pdf
+
+# Local research branches not part of the first public publish
+flood-early-warning/
+water_mask/
+aoi_generated.geojson
+aoi_builder.py
+chirps_daily_mean_2016_2026_box.csv
+Colab_message.txt
+
+# Baladweyne case study: keep the cleaned dashboard bundle and summaries,
+# ignore heavier local-only working layers and duplicate intermediates.
+baladweyne-2023/source_data/hydromet/raw/
+baladweyne-2023/source_data/osm/buildings.geojson
+baladweyne-2023/source_data/rainfall/chirps_daily_aoi_gee.csv
+baladweyne-2023/docs/
+baladweyne-2023/analysis/reference_review/
+baladweyne-2023/analysis/review_maps/
+baladweyne-2023/analysis/water_masks_s1_rtc/
+baladweyne-2023/analysis/water_masks_s2_ndwi/
+baladweyne-2023/analysis/impact_layers/
+baladweyne-2023/analysis/final_story_mask/*.geojson
+baladweyne-2023/analysis/final_story_impacts/*.geojson
+baladweyne-2023/analysis/final_story_impacts/*.csv
+baladweyne-2023/analysis/mask_consensus/*.geojson
+baladweyne-2023/ui/data/buildings_impacted_points.geojson

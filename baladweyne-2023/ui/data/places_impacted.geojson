@@ -1,0 +1,26 @@
+{
+"type": "FeatureCollection",
+"name": "places_impacted",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "name": "Baacyar", "place": "hamlet", "impact_level": "proximity", "distance_to_flood_m": 17.256129014740612 }, "geometry": { "type": "Point", "coordinates": [ 45.2909446, 4.5054408 ] } },
+{ "type": "Feature", "properties": { "name": "Cadiley", "place": "village", "impact_level": "proximity", "distance_to_flood_m": 28.587899031108972 }, "geometry": { "type": "Point", "coordinates": [ 45.26068, 4.56367 ] } },
+{ "type": "Feature", "properties": { "name": "Bir Jeeb", "place": "hamlet", "impact_level": "proximity", "distance_to_flood_m": 10.942711999913669 }, "geometry": { "type": "Point", "coordinates": [ 45.2564194, 4.5810364 ] } },
+{ "type": "Feature", "properties": { "name": "Xuddur Boor", "place": "village", "impact_level": "proximity", "distance_to_flood_m": 49.964132505901119 }, "geometry": { "type": "Point", "coordinates": [ 45.2336646, 4.6279187 ] } },
+{ "type": "Feature", "properties": { "name": "Hoyin", "place": "village", "impact_level": "proximity", "distance_to_flood_m": 36.395161841115822 }, "geometry": { "type": "Point", "coordinates": [ 45.2253656, 4.6501078 ] } },
+{ "type": "Feature", "properties": { "name": "Berdaaley", "place": "hamlet", "impact_level": "proximity", "distance_to_flood_m": 27.036030825222593 }, "geometry": { "type": "Point", "coordinates": [ 45.2253977, 4.6553104 ] } },
+{ "type": "Feature", "properties": { "name": "Bacaadlow", "place": "hamlet", "impact_level": "severe", "distance_to_flood_m": 0.0 }, "geometry": { "type": "Point", "coordinates": [ 45.2187329, 4.6658598 ] } },
+{ "type": "Feature", "properties": { "name": "Cadaley عضلة", "place": "hamlet", "impact_level": "proximity", "distance_to_flood_m": 15.912849637226678 }, "geometry": { "type": "Point", "coordinates": [ 45.2208649, 4.6743979 ] } },
+{ "type": "Feature", "properties": { "name": "Berdile", "place": "locality", "impact_level": "severe", "distance_to_flood_m": 0.0 }, "geometry": { "type": "Point", "coordinates": [ 45.2225, 4.6797 ] } },
+{ "type": "Feature", "properties": { "name": "Doon Kokoy", "place": "hamlet", "impact_level": "proximity", "distance_to_flood_m": 39.385588779127268 }, "geometry": { "type": "Point", "coordinates": [ 45.20802, 4.68588 ] } },
+{ "type": "Feature", "properties": { "name": "Xuubow", "place": "isolated_dwelling", "impact_level": "proximity", "distance_to_flood_m": 7.7753886087286537 }, "geometry": { "type": "Point", "coordinates": [ 45.1872315, 4.7774678 ] } },
+{ "type": "Feature", "properties": { "name": "Shiniile", "place": "village", "impact_level": "proximity", "distance_to_flood_m": 8.9439631353590006 }, "geometry": { "type": "Point", "coordinates": [ 45.2082369, 4.7947335 ] } },
+{ "type": "Feature", "properties": { "name": "Buulo Obliko", "place": "locality", "impact_level": "severe", "distance_to_flood_m": 0.0 }, "geometry": { "type": "Point", "coordinates": [ 45.180408, 4.80516 ] } },
+{ "type": "Feature", "properties": { "name": "Garaash", "place": "hamlet", "impact_level": "proximity", "distance_to_flood_m": 11.705795241946303 }, "geometry": { "type": "Point", "coordinates": [ 45.17657, 4.80838 ] } },
+{ "type": "Feature", "properties": { "name": "Qooqane", "place": "hamlet", "impact_level": "severe", "distance_to_flood_m": 0.0 }, "geometry": { "type": "Point", "coordinates": [ 45.1792413, 4.8496676 ] } },
+{ "type": "Feature", "properties": { "name": "Qarsooni", "place": "village", "impact_level": "proximity", "distance_to_flood_m": 49.206702341329361 }, "geometry": { "type": "Point", "coordinates": [ 45.1165054, 4.8605673 ] } },
+{ "type": "Feature", "properties": { "name": "Horjoog", "place": "hamlet", "impact_level": "proximity", "distance_to_flood_m": 24.97459959599119 }, "geometry": { "type": "Point", "coordinates": [ 45.1372433, 4.8625603 ] } },
+{ "type": "Feature", "properties": { "name": "Dolo Madow", "place": "locality", "impact_level": "proximity", "distance_to_flood_m": 2.8182704223017914 }, "geometry": { "type": "Point", "coordinates": [ 45.0954464, 4.8632281 ] } },
+{ "type": "Feature", "properties": { "name": "Kali Dhere", "place": "isolated_dwelling", "impact_level": "proximity", "distance_to_flood_m": 35.441292880061489 }, "geometry": { "type": "Point", "coordinates": [ 45.0809078, 4.8737213 ] } }
+]
+}

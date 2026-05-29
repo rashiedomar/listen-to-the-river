@@ -1,0 +1,24 @@
+{
+  "building_stats": {
+    "total_buildings": 60268,
+    "severe": 906,
+    "moderate": 157,
+    "minor": 94,
+    "proximity": 5303,
+    "total_affected": 6460
+  },
+  "road_stats": {
+    "total_roads": 5418,
+    "severe": 83,
+    "moderate": 125,
+    "minor": 39,
+    "proximity": 295,
+    "total_affected": 542
+  },
+  "place_stats": {
+    "total_places": 107,
+    "severe": 4,
+    "proximity": 15,
+    "total_affected": 19
+  }
+}

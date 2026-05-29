@@ -1,0 +1,74 @@
+{
+  "title": "Listen to the River",
+  "subtitle": "Baladweyne, November 2023",
+  "event_id": "SOM_NOV2023_BALADWEYNE_RIVERINE_FLOOD",
+  "label": "Baladweyne November 2023 riverine flood",
+  "city": "Baladweyne",
+  "country": "Somalia",
+  "river": "Shabelle",
+  "focus_dates": {
+    "start_date": "2023-11-17",
+    "peak_date": "2023-11-21",
+    "end_date": "2023-11-21",
+    "label": "Baladweyne November 2023 riverine flood"
+  },
+  "reference_documents": [
+    {
+      "title": "Beletweyne Riverine Flood Impact Map - Issued 21 November 2023",
+      "url": "https://faoswalim.org/content/beletweyne-riverine-flood-impact-map-issued-21-november-2023",
+      "pub_date": "Tue, 21 Nov 2023 14:48:46 +0000",
+      "kind": "impact_map"
+    },
+    {
+      "title": "Beletweyne Riverine Flood Impact Map - Issued 17 November 2023",
+      "url": "https://faoswalim.org/content/beletweyne-riverine-flood-impact-map-issued-17-november-2023",
+      "pub_date": "Sat, 18 Nov 2023 08:51:01 +0000",
+      "kind": "impact_map"
+    }
+  ],
+  "areas_km2": {
+    "s2_base": 103.68,
+    "core_overlap": 72.6,
+    "selected_s1_extensions": 92.35,
+    "final_story_mask": 196.03
+  },
+  "consensus_summary": {
+    "s2_km2": 103.68,
+    "s1_km2": 180.77,
+    "overlap_km2": 72.6,
+    "s2_only_km2": 31.08,
+    "s1_only_km2": 108.17,
+    "jaccard": 0.343
+  },
+  "impact_summary": {
+    "building_stats": {
+      "total_buildings": 60268,
+      "severe": 906,
+      "moderate": 157,
+      "minor": 94,
+      "proximity": 5303,
+      "total_affected": 6460
+    },
+    "road_stats": {
+      "total_roads": 5418,
+      "severe": 83,
+      "moderate": 125,
+      "minor": 39,
+      "proximity": 295,
+      "total_affected": 542
+    },
+    "place_stats": {
+      "total_places": 107,
+      "severe": 4,
+      "proximity": 15,
+      "total_affected": 19
+    }
+  },
+  "layer_labels": {
+    "roads": "Roads",
+    "buildings": "Buildings",
+    "places": "Places",
+    "core": "Confidence core",
+    "extensions": "S1 fringe"
+  }
+}

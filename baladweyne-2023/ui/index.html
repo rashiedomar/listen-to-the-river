@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Listen to the River</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=IBM+Plex+Mono:wght@400;500&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div id="map"></div>
+  <div class="atmosphere"></div>
+
+  <header class="title-card">
+    <div class="eyebrow">Baladweyne · November 2023</div>
+    <h1>Listen to the River</h1>
+  </header>
+
+  <section class="control-card" aria-label="Layer controls">
+    <div class="eyebrow">Layers</div>
+    <div id="layer-toggles" class="layer-toggles"></div>
+  </section>
+
+  <section class="legend-card" aria-label="Legend">
+    <div class="eyebrow">Legend</div>
+    <div class="legend-row"><span class="swatch swatch-water"></span> Flood water</div>
+    <div class="legend-row"><span class="swatch swatch-core"></span> Confidence core</div>
+    <div class="legend-row"><span class="swatch swatch-fringe"></span> S1 fringe</div>
+    <div class="legend-row"><span class="swatch swatch-road"></span> Roads</div>
+    <div class="legend-row"><span class="swatch swatch-building"></span> Buildings</div>
+    <div class="legend-row"><span class="swatch swatch-place"></span> Places</div>
+  </section>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="./app.js" type="module"></script>
+</body>
+</html>

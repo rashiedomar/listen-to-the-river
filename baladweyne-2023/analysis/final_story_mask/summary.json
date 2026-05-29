@@ -1,0 +1,23 @@
+{
+  "parameters": {
+    "min_s1_extension_area_km2": 0.05,
+    "max_s1_overlap_distance_m": 50.0,
+    "max_s1_river_distance_m": 2200.0
+  },
+  "areas_km2": {
+    "s2_base": 103.68,
+    "core_overlap": 72.6,
+    "selected_s1_extensions": 92.35,
+    "final_story_mask": 196.03
+  },
+  "counts": {
+    "selected_s1_extension_polygons": 204,
+    "core_polygons": 3241,
+    "final_story_polygons": 474
+  },
+  "outputs": {
+    "core_flood_mask": "analysis/final_story_mask/core_flood_mask.geojson",
+    "selected_s1_extensions": "analysis/final_story_mask/selected_s1_extensions.geojson",
+    "final_story_mask": "analysis/final_story_mask/final_story_mask.geojson"
+  }
+}
